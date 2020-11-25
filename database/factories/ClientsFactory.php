@@ -9,5 +9,6 @@ $factory->define(Client::class, function (Faker $faker) {
     return [
         'name' => $faker->name,
         'code' => $faker->unique()->isbn10,
+        //'city_id' => factory(App\City::class)
     ];
 });
