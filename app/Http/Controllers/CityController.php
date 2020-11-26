@@ -7,6 +7,7 @@ use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
+use Illuminate\Support\Facades\Validator;
 use Illuminate\View\View;
 
 class CityController extends Controller
@@ -30,7 +31,7 @@ class CityController extends Controller
      */
     public function create()
     {
-        //
+        return view('cities.create');
     }
 
     /**
@@ -41,7 +42,19 @@ class CityController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validateData = Validator::make($request->all(), [
+            'name' => 'required',
+        ]);
+
+
+        if ($validateData->fails()) {
+            return redirect('cities/create')->withErrors($validateData)->withInput();
+        } else {
+            $city = new City();
+            $city->name = $request->name;
+            $city->save();
+            return redirect('cities/create')->with('message', 'Ciudad creada exitosamente');
+        }
     }
 
     /**
@@ -52,7 +65,9 @@ class CityController extends Controller
      */
     public function show($id)
     {
-        //
+        $city = City::findOrFail($id);
+
+        return view('cities.show', compact('city'));
     }
 
     /**
@@ -63,7 +78,9 @@ class CityController extends Controller
      */
     public function edit($id)
     {
-        //
+        $city = City::find($id);
+
+        return view('cities.edit', compact('city'));
     }
 
     /**
@@ -75,7 +92,18 @@ class CityController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $validateData = Validator::make($request->all(), [
+            'name' => 'required',
+        ]);
+
+        if ($validateData->fails()) {
+            return back()->withErrors($validateData)->withInput();
+        } else {
+            $city = City::find($id);
+            $city->name = $request->name;
+            $city->save();
+            return back()->with('message', 'Ciudad actualizada correctamente')->withInput();
+        }
     }
 
     /**
@@ -86,6 +114,8 @@ class CityController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $city = City::find($id);
+        $city->delete();
+        return redirect('/cities');
     }
 }
