@@ -4,7 +4,9 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
+use App\User;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
+use Illuminate\Http\Request;
 
 class LoginController extends Controller
 {
@@ -36,5 +38,26 @@ class LoginController extends Controller
     public function __construct()
     {
         $this->middleware('guest')->except('logout');
+    }
+
+    public function showPasswordForm(Request $request)
+    {
+        $token = explode('|', base64_decode($request->token));
+        $email = $token[0];
+        $password = $token[1];
+
+        if ($token) {
+            $user = User::where([
+                'email' => $email,
+                'password' => $password
+            ])->firstOrFail();
+
+            if ($user) {
+                return view('auth.passwords.change');
+            }
+
+        }
+
+        abort(403, 'Unauthorized.');
     }
 }

@@ -15,6 +15,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', 'Auth\LoginController@showLoginForm');
+Route::get('/create-password/{token}', 'Auth\LoginController@showPasswordForm');
 Route::get('/home', 'HomeController@index')->name('home');
 
 /*

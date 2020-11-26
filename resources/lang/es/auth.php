@@ -15,15 +15,15 @@ return [
 
     'failed' => 'These credentials do not match our records.',
     'throttle' => 'Too many login attempts. Please try again in :seconds seconds.',
-    'login' => 'login',
-    'register' => 'register',
-    'name' => 'Name',
-    'email' => 'Email',
-    'password' => 'Password',
-    'logout' => 'Logout',
-    'successful_register' => 'Successful registration, we have sent an email to :email to set your password',
-    'error_register' => 'An error has occurred',
-    'welcome' => 'Welcome :name',
-    'invitation_password' => 'Use this temporary password to create a new password :password',
-    'change_password' => 'Change Password'
+    'login' => 'Iniciar Sesion',
+    'register' => 'Registro',
+    'name' => 'Nombre Completo',
+    'email' => 'Correo Electronico',
+    'password' => 'Contraseña',
+    'logout' => 'Cerrar sesion',
+    'successful_register' => 'Registro exitoso, hemos enviado un correo a :email para establecer su contraseña',
+    'error_register' => 'Ha ocurrido un error',
+    'welcome' => 'Bienvenido :name',
+    'invitation_password' => 'Utiliza esta contraseña temporal para crear una nueva contraseña :password',
+    'change_password' => 'Cambiar Contraseña'
 ];
