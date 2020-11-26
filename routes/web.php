@@ -17,7 +17,12 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', 'Auth\LoginController@showLoginForm');
 Route::get('/create-password/{token}', 'Auth\LoginController@showPasswordForm');
 Route::post('/create-password', 'Auth\LoginController@changePassword')->name('create-password');
+
+
 Route::get('/home', 'HomeController@index')->name('home');
+
+Route::resource('clients', 'ClientController');
+Route::resource('cities', 'CityController');
 
 /*
  * Authentication Routes
