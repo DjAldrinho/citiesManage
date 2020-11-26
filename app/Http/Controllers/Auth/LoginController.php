@@ -7,6 +7,8 @@ use App\Providers\RouteServiceProvider;
 use App\User;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Validator;
 
 class LoginController extends Controller
 {
@@ -53,11 +55,36 @@ class LoginController extends Controller
             ])->firstOrFail();
 
             if ($user) {
-                return view('auth.passwords.change');
+                return view('auth.passwords.change')->with('id', $user->id);
             }
 
         }
 
         abort(403, 'Unauthorized.');
+    }
+
+    public function changePassword(Request $request)
+    {
+
+        $validateData = Validator::make($request->all(), [
+            'password' => 'required|confirmed',
+            'password_confirmation' => 'required',
+        ]);
+
+
+        if ($validateData->fails()) {
+            return back()->withErrors($validateData);
+        } else {
+
+            $user = User::findOrFail($request->id);
+
+            $userWithOutEvents = User::withoutEvents(function () use ($user, $request) {
+                $user->password = Hash::make($request->password);
+                $user->save();
+                return $user;
+            });
+
+            return redirect('login')->with('message', __('auth.successful_change_password'));
+        }
     }
 }

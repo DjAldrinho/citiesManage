@@ -25,5 +25,11 @@ return [
     'error_register' => 'Ha ocurrido un error',
     'welcome' => 'Bienvenido :name',
     'invitation_password' => 'Utiliza esta contraseña temporal para crear una nueva contraseña :password',
-    'change_password' => 'Cambiar Contraseña'
+    'change_password' => 'Cambiar Contraseña',
+    'change_password_text' => 'Por favor, cambie su contraseña',
+    'new_password' => 'Nueva Contraseña',
+    'confirm_new_password' => 'Confirmar nueva contraseña',
+    'successful_change_password' => 'Contraseña cambiada',
+    'remember' => 'Recuerdame',
+    'forgot' => 'Olvido su contraseña?'
 ];

@@ -25,5 +25,11 @@ return [
     'error_register' => 'An error has occurred',
     'welcome' => 'Welcome :name',
     'invitation_password' => 'Use this temporary password to create a new password :password',
-    'change_password' => 'Change Password'
+    'change_password' => 'Change Password',
+    'change_password_text' => 'Please change your password',
+    'new_password' => 'New Password',
+    'confirm_new_password' => 'Confirm New Password',
+    'successful_change_password' => 'Password Changed',
+    'remember' => 'Remember Me',
+    'forgot' => 'Forgot Your Password?'
 ];
