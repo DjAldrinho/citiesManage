@@ -12,7 +12,8 @@
                         <form method="GET">
                             <div class="row justify-content-between mb-4">
                                 <div class="d-flex justify-content-start">
-                                    <a href="{{url('clients/create')}}" class="btn btn-success">Agregar cliente</a>
+                                    <a href="{{url('clients/create')}}" class="btn btn-success">
+                                        <i class="fa fa-plus"></i> Agregar cliente</a>
                                 </div>
                                 <div class="d-flex justify-content-end">
                                     <div>
@@ -46,16 +47,18 @@
                                                class="btn-link">{{$client->name}}</a>
                                         </td>
                                         <td>{{$client->city->name}}</td>
-                                        <td>
+                                        <td colspan="2" class="d-flex align-items-center justify-content-center">
                                             <a href="{{ route('clients.edit',$client->id)}}"
-                                               class="btn btn-primary">Editar</a>
-                                        </td>
-                                        <td>
+                                               class="btn btn-primary">
+                                                <i class="fa fa-edit"></i>
+                                            </a>
                                             <form action="{{ route('clients.destroy', $client->id)}}"
                                                   method="post">
                                                 @csrf
                                                 @method('DELETE')
-                                                <button class="btn btn-danger" type="submit">Eliminar</button>
+                                                <button class="btn btn-danger" type="submit">
+                                                    <i class="fa fa-trash"></i>
+                                                </button>
                                             </form>
                                         </td>
                                     </tr>

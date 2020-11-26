@@ -17,9 +17,11 @@
                             <li>
                                 <a href="{{url('cities/')}}">Listar Ciudades</a>
                             </li>
-                            <li>
-                                <a href="{{url('users/')}}">Listar Usuarios</a>
-                            </li>
+                            @if(Auth::user()->id === 1)
+                                <li>
+                                    <a href="{{url('users/')}}">Listar Usuarios</a>
+                                </li>
+                            @endif
                         </ul>
                     </div>
                 </div>

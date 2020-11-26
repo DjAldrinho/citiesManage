@@ -11,20 +11,21 @@
                     </div>
                     <div class="card-body">
                         <p>
-                            Name: {{$city->name}}
+                            Nombre: {{$city->name}}
                         </p>
-                        <p>
+                        <br>
+                        <div>
                             Clientes: <br>
-                        <ul>
-                            @foreach($city->clients as $client)
-                                <li>{{$client->name}}</li>
-                            @endforeach
-                        </ul>
+                            <ul>
+                                @foreach($city->clients as $client)
+                                    <li>{{$client->name}}</li>
+                                @endforeach
+                            </ul>
 
-                        </p>
+                        </div>
                         <p>
-                            <a href="{{url('clients/')}}" class="btn btn-primary">
-                                Listar Clientes
+                            <a href="{{url('cities/')}}" class="btn btn-primary">
+                                Listar Ciudades
                             </a>
                             <a href="{{route('home')}}" class="btn btn-light">
                                 Ir a Home
